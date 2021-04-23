@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ece448.iot_hub.GroupsModelTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-04-23T16:38:08" hostname="LAPTOP-08FCAOQ2" time="1.718">
+  <properties/>
+  <testcase name="testCreateGroup" classname="ece448.iot_hub.GroupsModelTests" time="0.001"/>
+  <testcase name="testRemoveGroup" classname="ece448.iot_hub.GroupsModelTests" time="0.0"/>
+  <testcase name="testPublish" classname="ece448.iot_hub.GroupsModelTests" time="0.408"/>
+  <testcase name="testCreatePopulatedGroup" classname="ece448.iot_hub.GroupsModelTests" time="0.056"/>
+  <testcase name="testGetUnknownGroup" classname="ece448.iot_hub.GroupsModelTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

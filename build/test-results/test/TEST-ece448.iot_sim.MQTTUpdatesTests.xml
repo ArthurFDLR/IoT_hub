@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ece448.iot_sim.MQTTUpdatesTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-23T16:38:20" hostname="LAPTOP-08FCAOQ2" time="0.004">
+  <properties/>
+  <testcase name="testTopic" classname="ece448.iot_sim.MQTTUpdatesTests" time="0.004"/>
+  <testcase name="testMessage" classname="ece448.iot_sim.MQTTUpdatesTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

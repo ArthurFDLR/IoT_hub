@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ece448.iot_hub.GroupsResourceTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-04-23T16:38:10" hostname="LAPTOP-08FCAOQ2" time="2.763">
+  <properties/>
+  <testcase name="testDeleteGroup" classname="ece448.iot_hub.GroupsResourceTests" time="0.409"/>
+  <testcase name="testGetGroup" classname="ece448.iot_hub.GroupsResourceTests" time="0.613"/>
+  <testcase name="testGetGroups" classname="ece448.iot_hub.GroupsResourceTests" time="0.403"/>
+  <testcase name="testCreateDeleteGroup" classname="ece448.iot_hub.GroupsResourceTests" time="0.403"/>
+  <system-out><![CDATA[2021-04-23 11:38:10,483 INFO REST Delete group myNewGroup
+2021-04-23 11:38:12,640 INFO REST Create group myNewGroup: [a, b, c]
+2021-04-23 11:38:12,842 INFO REST Delete group myNewGroup
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

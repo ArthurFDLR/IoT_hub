@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ece448.iot_sim.MQTTCommandsTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-04-23T16:38:20" hostname="LAPTOP-08FCAOQ2" time="0.011">
+  <properties/>
+  <testcase name="testNonExistantPlug" classname="ece448.iot_sim.MQTTCommandsTests" time="0.005"/>
+  <testcase name="testSimpleActions" classname="ece448.iot_sim.MQTTCommandsTests" time="0.001"/>
+  <testcase name="testTopic" classname="ece448.iot_sim.MQTTCommandsTests" time="0.0"/>
+  <testcase name="testInit" classname="ece448.iot_sim.MQTTCommandsTests" time="0.0"/>
+  <testcase name="testNonAction" classname="ece448.iot_sim.MQTTCommandsTests" time="0.0"/>
+  <testcase name="testNonExistantAction" classname="ece448.iot_sim.MQTTCommandsTests" time="0.001"/>
+  <system-out><![CDATA[2021-04-23 11:38:20,232 INFO Create new plug: Antenna
+2021-04-23 11:38:20,232 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,232 INFO Create new plug: Computer
+2021-04-23 11:38:20,237 INFO MqttCmd /action/non-existant/on
+2021-04-23 11:38:20,237 INFO Create new plug: Antenna
+2021-04-23 11:38:20,238 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,238 INFO Create new plug: Computer
+2021-04-23 11:38:20,238 INFO MqttCmd /action/Antenna/on
+2021-04-23 11:38:20,239 INFO MqttCmd /action/Antenna/off
+2021-04-23 11:38:20,239 INFO MqttCmd /action/Antenna/toggle
+2021-04-23 11:38:20,239 INFO Create new plug: Antenna
+2021-04-23 11:38:20,239 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,240 INFO Create new plug: Computer
+2021-04-23 11:38:20,240 INFO Create new plug: Antenna
+2021-04-23 11:38:20,240 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,240 INFO Create new plug: Computer
+2021-04-23 11:38:20,241 INFO Create new plug: Antenna
+2021-04-23 11:38:20,241 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,241 INFO Create new plug: Computer
+2021-04-23 11:38:20,241 INFO MqttCmd /non-action/Antenna/on
+2021-04-23 11:38:20,242 INFO Create new plug: Antenna
+2021-04-23 11:38:20,242 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,242 INFO Create new plug: Computer
+2021-04-23 11:38:20,243 INFO MqttCmd /action/Antenna/non-existant
+2021-04-23 11:38:20,243 INFO MqttCmd /action/Antenna/non/existant
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

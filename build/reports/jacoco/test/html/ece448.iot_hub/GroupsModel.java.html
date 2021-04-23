@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GroupsModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IoT_hub</a> &gt; <a href="index.source.html" class="el_package">ece448.iot_hub</a> &gt; <span class="el_source">GroupsModel.java</span></div><h1>GroupsModel.java</h1><pre class="source lang-java linenums">package ece448.iot_hub;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Component
+public class GroupsModel {
+    
+    private final PlugsModel plugs;
+<span class="fc" id="L16">    private final HashMap&lt;String, ArrayList&lt;String&gt;&gt; groups = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L18">    public GroupsModel(PlugsModel plugs) {</span>
+<span class="fc" id="L19">        this.plugs = plugs;</span>
+<span class="fc" id="L20">    }</span>
+
+    synchronized public void publishAction(String groupName, String action) {
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for (String plugName : groups.get(groupName)) {</span>
+<span class="fc" id="L24">            plugs.publishAction(plugName, action);</span>
+<span class="fc" id="L25">        }</span>
+<span class="fc" id="L26">    }</span>
+
+    synchronized public void createGroup(String groupName) {
+<span class="fc" id="L29">        createGroup(groupName, new ArrayList&lt;String&gt;());</span>
+<span class="fc" id="L30">    }</span>
+
+    synchronized public void createGroup(String groupName, ArrayList&lt;String&gt; plugsName) {
+<span class="fc" id="L33">        groups.put(groupName, plugsName);</span>
+<span class="fc" id="L34">    }</span>
+
+    synchronized public void removeGroup(String groupName) {
+<span class="fc" id="L37">        groups.remove(groupName);</span>
+<span class="fc" id="L38">    }</span>
+
+/*
+    synchronized public void removePlugFromGroup(String groupName, String plugName) {
+        groups.get(groupName).remove(plugName);
+    }
+
+    synchronized public void addPlugToGroup(String groupName, String plugName) {
+        if (!groups.get(groupName).contains(plugName)) {
+            groups.get(groupName).add(plugName);
+        }
+    }
+*/
+
+    synchronized public HashMap&lt;String, Object&gt; getGroup(String groupName) {
+<span class="fc" id="L53">        HashMap&lt;String, Object&gt; ret = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L54">        ret.put(&quot;name&quot;, groupName);</span>
+<span class="fc" id="L55">        ArrayList&lt;HashMap&lt;String, Object&gt;&gt; members = new ArrayList&lt;HashMap&lt;String, Object&gt;&gt;();</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (groups.get(groupName) != null){</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            for (String plugName : groups.get(groupName)) {</span>
+<span class="fc" id="L58">                members.add(plugs.getPlug(plugName));</span>
+<span class="fc" id="L59">            }</span>
+        }
+<span class="fc" id="L61">        ret.put(&quot;members&quot;, members);</span>
+<span class="fc" id="L62">        return ret;</span>
+    }
+
+    synchronized public List&lt;String&gt; getGroupsNames() {
+<span class="fc" id="L66">        return new ArrayList&lt;String&gt;(groups.keySet());</span>
+    }
+
+<span class="fc" id="L69">    private static final Logger logger = LoggerFactory.getLogger(GroupsModel.class);</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

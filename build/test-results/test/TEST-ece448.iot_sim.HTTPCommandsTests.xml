@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ece448.iot_sim.HTTPCommandsTests" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-04-23T16:38:20" hostname="LAPTOP-08FCAOQ2" time="0.032">
+  <properties/>
+  <testcase name="testNonExistantPlug" classname="ece448.iot_sim.HTTPCommandsTests" time="0.009"/>
+  <testcase name="testSwitchOff" classname="ece448.iot_sim.HTTPCommandsTests" time="0.001"/>
+  <testcase name="testInit" classname="ece448.iot_sim.HTTPCommandsTests" time="0.0"/>
+  <testcase name="testMultipleCommands" classname="ece448.iot_sim.HTTPCommandsTests" time="0.003"/>
+  <testcase name="testRootPath" classname="ece448.iot_sim.HTTPCommandsTests" time="0.0"/>
+  <testcase name="testSwitchOn" classname="ece448.iot_sim.HTTPCommandsTests" time="0.001"/>
+  <testcase name="testNonExistantAction" classname="ece448.iot_sim.HTTPCommandsTests" time="0.001"/>
+  <testcase name="testMultiplePlugs" classname="ece448.iot_sim.HTTPCommandsTests" time="0.002"/>
+  <testcase name="testReport" classname="ece448.iot_sim.HTTPCommandsTests" time="0.004"/>
+  <testcase name="testToggle" classname="ece448.iot_sim.HTTPCommandsTests" time="0.001"/>
+  <system-out><![CDATA[2021-04-23 11:38:20,192 INFO Create new plug: Antenna
+2021-04-23 11:38:20,193 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,193 INFO Create new plug: Computer
+2021-04-23 11:38:20,202 INFO HTTPCmd /NonExistant: {}
+2021-04-23 11:38:20,202 INFO Create new plug: Antenna
+2021-04-23 11:38:20,203 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,203 INFO Create new plug: Computer
+2021-04-23 11:38:20,204 INFO HTTPCmd /Antenna: {action=off}
+2021-04-23 11:38:20,205 INFO Create new plug: Antenna
+2021-04-23 11:38:20,205 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,205 INFO Create new plug: Computer
+2021-04-23 11:38:20,206 INFO Create new plug: Antenna
+2021-04-23 11:38:20,207 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,207 INFO Create new plug: Computer
+2021-04-23 11:38:20,208 INFO HTTPCmd /Antenna: {action=on}
+2021-04-23 11:38:20,208 INFO HTTPCmd /Antenna: {action=on}
+2021-04-23 11:38:20,208 INFO HTTPCmd /Antenna: {action=off}
+2021-04-23 11:38:20,209 INFO HTTPCmd /Antenna: {action=on}
+2021-04-23 11:38:20,209 INFO HTTPCmd /Antenna: {action=off}
+2021-04-23 11:38:20,210 INFO HTTPCmd /Antenna: {action=off}
+2021-04-23 11:38:20,210 INFO HTTPCmd /Antenna: {action=toggle}
+2021-04-23 11:38:20,211 INFO Create new plug: Antenna
+2021-04-23 11:38:20,211 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,211 INFO Create new plug: Computer
+2021-04-23 11:38:20,211 INFO HTTPCmd /: {}
+2021-04-23 11:38:20,212 INFO Create new plug: Antenna
+2021-04-23 11:38:20,212 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,212 INFO Create new plug: Computer
+2021-04-23 11:38:20,213 INFO HTTPCmd /Antenna: {action=on}
+2021-04-23 11:38:20,213 INFO Create new plug: Antenna
+2021-04-23 11:38:20,214 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,214 INFO Create new plug: Computer
+2021-04-23 11:38:20,215 INFO HTTPCmd /Antenna: {action=non-existant}
+2021-04-23 11:38:20,215 INFO Create new plug: Antenna
+2021-04-23 11:38:20,216 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,216 INFO Create new plug: Computer
+2021-04-23 11:38:20,217 INFO HTTPCmd /Antenna: {action=on}
+2021-04-23 11:38:20,217 INFO HTTPCmd /Computer: {action=toggle}
+2021-04-23 11:38:20,217 INFO HTTPCmd /Antenna: {action=off}
+2021-04-23 11:38:20,218 INFO Create new plug: Antenna
+2021-04-23 11:38:20,218 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,219 INFO Create new plug: Computer
+2021-04-23 11:38:20,219 INFO HTTPCmd /Antenna: {}
+2021-04-23 11:38:20,220 INFO HTTPCmd /Antenna: {}
+2021-04-23 11:38:20,220 INFO HTTPCmd /Antenna: {}
+2021-04-23 11:38:20,221 INFO HTTPCmd /Bed.200: {}
+2021-04-23 11:38:20,222 INFO HTTPCmd /Bed.200: {}
+2021-04-23 11:38:20,222 INFO HTTPCmd /Bed.200: {}
+2021-04-23 11:38:20,222 INFO HTTPCmd /Computer: {}
+2021-04-23 11:38:20,223 INFO HTTPCmd /Computer: {}
+2021-04-23 11:38:20,223 INFO HTTPCmd /Computer: {}
+2021-04-23 11:38:20,224 INFO Create new plug: Antenna
+2021-04-23 11:38:20,224 INFO Create new plug: Bed.200
+2021-04-23 11:38:20,224 INFO Create new plug: Computer
+2021-04-23 11:38:20,225 INFO HTTPCmd /Antenna: {action=toggle}
+2021-04-23 11:38:20,225 INFO HTTPCmd /Antenna: {action=toggle}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

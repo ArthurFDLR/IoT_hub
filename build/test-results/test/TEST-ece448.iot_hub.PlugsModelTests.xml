@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ece448.iot_hub.PlugsModelTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-04-23T16:38:13" hostname="LAPTOP-08FCAOQ2" time="3.552">
+  <properties/>
+  <testcase name="testErrorUpdate" classname="ece448.iot_hub.PlugsModelTests" time="0.0"/>
+  <testcase name="testInit" classname="ece448.iot_hub.PlugsModelTests" time="1.002"/>
+  <testcase name="testPowerUpdate" classname="ece448.iot_hub.PlugsModelTests" time="0.0"/>
+  <testcase name="testStateUpdate" classname="ece448.iot_hub.PlugsModelTests" time="0.0"/>
+  <testcase name="testGetAll" classname="ece448.iot_hub.PlugsModelTests" time="1.002"/>
+  <testcase name="testStoppedClient" classname="ece448.iot_hub.PlugsModelTests" time="0.003"/>
+  <system-out><![CDATA[2021-04-23 11:38:16,915 ERROR Mqtt Plugs: fail to subscribe
+2021-04-23 11:38:16,916 ERROR MqttCtl: unit_tests/PlugsModel/action/name/action fail to publish
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -2,14 +2,14 @@
     --lightest-slate: #00184E;
     --lightest-navy: #E9EBEE;
     --grey-shadow: rgba(20, 20, 20, 0.2);
-    --light-grey-alt: #f4f5f7;
-    --slate: #595b5e;
-    --light-slate: #6c6f72; 
+    --light-grey-alt: #EDEFF3;
+    --slate: #636568; 
+    --light-slate: #3C4147;
     --blue: #035DB4;
 
-    --fz-heading: 60px;
+    --fz-heading: 38px;
     --fz-xs: 13px;
-    --fz-xl: 15px;
+    --fz-md: 16px;
 
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 }
@@ -28,19 +28,19 @@ h6 {
 
 .heading {
     margin: 10px 15px 20px;
-    font-size: clamp(30px, 7vw, 70px);
+    font-size: clamp(26px, 5vw, var(--fz-heading));
 }
 
 .big-heading {
     margin: 30px 20px 5px;
-    font-size: clamp(50px, 10vw, 100px);
+    font-size: clamp(30px, 6vw, 60px);
 }
 
 .small-title {
     margin-top: auto !important;
     margin-bottom: auto !important;
     font-family: var(--font-mono);
-    font-size: var(--fz-xl);
+    font-size: var(--fz-md);
     color: var(--slate);
 }
 

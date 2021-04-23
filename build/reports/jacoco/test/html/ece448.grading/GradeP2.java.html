@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GradeP2.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IoT_hub</a> &gt; <a href="index.source.html" class="el_package">ece448.grading</a> &gt; <span class="el_source">GradeP2.java</span></div><h1>GradeP2.java</h1><pre class="source lang-java linenums">package ece448.grading;
+
+import java.util.Arrays;
+
+import org.apache.http.client.fluent.Request;
+
+import ece448.iot_sim.SimConfig;
+import ece448.iot_sim.Main;
+
+<span class="nc" id="L10">public class GradeP2 {</span>
+
+	public static void main(String[] args) throws Exception {
+<span class="nc" id="L13">		SimConfig config = new SimConfig(</span>
+<span class="nc" id="L14">			8080, Arrays.asList(&quot;xxxx&quot;, &quot;yyyy&quot;, &quot;zzzz.789&quot;), null, null, null);</span>
+
+<span class="nc" id="L16">		try (Main m = new Main(config))</span>
+		{
+<span class="nc" id="L18">			Grading.run(new GradeP2(), 10);</span>
+		}
+<span class="nc" id="L20">	}</span>
+
+	private String get(String pathParams) throws Exception {
+<span class="nc" id="L23">		return Request.Get(&quot;http://127.0.0.1:8080&quot;+pathParams)</span>
+<span class="nc" id="L24">			.userAgent(&quot;Mozilla/5.0&quot;)</span>
+<span class="nc" id="L25">			.connectTimeout(1000)</span>
+<span class="nc" id="L26">			.socketTimeout(1000)</span>
+<span class="nc" id="L27">			.execute().returnContent().asString();</span>
+	}
+
+	public boolean testCase00() throws Exception {
+<span class="nc" id="L31">		String ret = get(&quot;/xxxx&quot;);</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">		return (ret.indexOf(&quot;xxxx is off&quot;) != -1)</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;xxxx is on&quot;) == -1)</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;Power reading is 0.000&quot;) != -1);</span>
+	}
+
+	public boolean testCase01() throws Exception {
+<span class="nc" id="L38">		String ret = get(&quot;/xxxx?action=on&quot;);</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">		return (ret.indexOf(&quot;xxxx is on&quot;) != -1)</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;xxxx is off&quot;) == -1);</span>
+	}
+
+	public boolean testCase02() throws Exception {
+<span class="nc" id="L44">		String ret = get(&quot;/xxxx?action=off&quot;);</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">		return (ret.indexOf(&quot;xxxx is off&quot;) != -1)</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;xxxx is on&quot;) == -1);</span>
+	}
+
+	public boolean testCase03() throws Exception {
+<span class="nc" id="L50">		String ret = get(&quot;/xxxx?action=on&quot;);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">		return (ret.indexOf(&quot;xxxx is on&quot;) != -1)</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;xxxx is off&quot;) == -1);</span>
+	}
+
+	public boolean testCase04() throws Exception {
+<span class="nc" id="L56">		String ret = get(&quot;/xxxx?action=toggle&quot;);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">		return (ret.indexOf(&quot;xxxx is off&quot;) != -1)</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;xxxx is on&quot;) == -1);</span>
+	}
+
+	public boolean testCase05() throws Exception {
+<span class="nc" id="L62">		String ret = get(&quot;/xxxx?action=toggle&quot;);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">		return (ret.indexOf(&quot;xxxx is on&quot;) != -1)</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;xxxx is off&quot;) == -1);</span>
+	}
+
+	public boolean testCase06() throws Exception {
+<span class="nc" id="L68">		String ret = get(&quot;/yyyy&quot;);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">		return (ret.indexOf(&quot;yyyy is off&quot;) != -1)</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;yyyy is on&quot;) == -1);</span>
+	}
+
+	public boolean testCase07() throws Exception {
+<span class="nc" id="L74">		String ret = get(&quot;/xxxx&quot;);</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">		return (ret.indexOf(&quot;xxxx is on&quot;) != -1)</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">			&amp;&amp; (ret.indexOf(&quot;xxxx is off&quot;) == -1);</span>
+	}
+
+	public boolean testCase08() throws Exception {
+<span class="nc" id="L80">		String ret = get(&quot;/zzzz.789&quot;);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		return (ret.indexOf(&quot;Power reading is 0.000&quot;) != -1);</span>
+	}
+
+	public boolean testCase09() throws Exception {
+<span class="nc" id="L85">		get(&quot;/zzzz.789?action=on&quot;);</span>
+<span class="nc" id="L86">		Thread.sleep(1500);</span>
+<span class="nc" id="L87">		String ret = get(&quot;/zzzz.789&quot;);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">		return (ret.indexOf(&quot;Power reading is 789.000&quot;) != -1);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

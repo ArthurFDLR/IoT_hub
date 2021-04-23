@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HubConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IoT_hub</a> &gt; <a href="index.source.html" class="el_package">ece448.iot_hub</a> &gt; <span class="el_source">HubConfig.java</span></div><h1>HubConfig.java</h1><pre class="source lang-java linenums">package ece448.iot_hub;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class HubConfig {
+
+	private final int httpPort;
+	private final String mqttBroker;
+	private final String mqttClientId;
+	private final String mqttTopicPrefix;
+
+	@JsonCreator
+	public HubConfig(
+		@JsonProperty(value = &quot;httpPort&quot;, required = true) int httpPort,
+		@JsonProperty(value = &quot;mqttBroker&quot;, required = true) String mqttBroker,
+		@JsonProperty(value = &quot;mqttClientId&quot;, required = true) String mqttClientId,
+<span class="nc" id="L18">		@JsonProperty(value = &quot;mqttTopicPrefix&quot;, required = true) String mqttTopicPrefix) {</span>
+<span class="nc" id="L19">		this.httpPort = httpPort;</span>
+<span class="nc" id="L20">		this.mqttBroker = mqttBroker;</span>
+<span class="nc" id="L21">		this.mqttClientId = mqttClientId;</span>
+<span class="nc" id="L22">		this.mqttTopicPrefix = mqttTopicPrefix;</span>
+<span class="nc" id="L23">	}</span>
+
+	public int getHttpPort() {
+<span class="nc" id="L26">		return httpPort;</span>
+	}
+
+	public String getMqttBroker() {
+<span class="nc" id="L30">		return mqttBroker;</span>
+	}
+
+	public String getMqttClientId() {
+<span class="nc" id="L34">		return mqttClientId;</span>
+	}
+
+	public String getMqttTopicPrefix() {
+<span class="nc" id="L38">		return mqttTopicPrefix;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

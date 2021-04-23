@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GradeP4.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IoT_hub</a> &gt; <a href="index.source.html" class="el_package">ece448.grading</a> &gt; <span class="el_source">GradeP4.java</span></div><h1>GradeP4.java</h1><pre class="source lang-java linenums">package ece448.grading;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.apache.http.client.fluent.Request;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import ece448.iot_sim.SimConfig;
+import ece448.grading.GradeP3.MqttController;
+import ece448.iot_hub.HubConfig;
+
+public class GradeP4 implements AutoCloseable {
+
+	private static final String broker = &quot;tcp://127.0.0.1&quot;;
+<span class="nc" id="L23">	private static final String topicPrefix = System.currentTimeMillis()+&quot;/grade_p4/iot_ece448&quot;;</span>
+<span class="nc" id="L24">	private static final List&lt;String&gt; plugNames = Arrays.asList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);</span>
+<span class="nc" id="L25">	private static final List&lt;String&gt; plugNamesEx = Arrays.asList(&quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;);</span>
+<span class="nc" id="L26">	private static final List&lt;String&gt; allPlugNames = Arrays.asList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;);</span>
+
+<span class="nc" id="L28">	private static final ObjectMapper mapper = new ObjectMapper();</span>
+<span class="nc" id="L29">	private static final Logger logger = LoggerFactory.getLogger(GradeP4.class);</span>
+
+	private final MqttController mqtt;
+
+<span class="nc" id="L33">	private GradeP4() throws Exception {</span>
+<span class="nc" id="L34">		this.mqtt = new MqttController(broker, &quot;grader/iot_hub&quot;, topicPrefix);</span>
+<span class="nc" id="L35">		this.mqtt.start();</span>
+<span class="nc" id="L36">	}</span>
+
+	@Override
+	public void close() throws Exception {
+<span class="nc" id="L40">		mqtt.close();</span>
+<span class="nc" id="L41">	}</span>
+
+	public static void main(String[] args) throws Exception {
+<span class="nc" id="L44">		SimConfig config = new SimConfig(8080, plugNames, broker, &quot;testee/iot_sim&quot;, topicPrefix);</span>
+<span class="nc" id="L45">		SimConfig configEx = new SimConfig(8081, plugNamesEx, broker, &quot;ex_testee/iot_sim&quot;, topicPrefix);</span>
+<span class="nc" id="L46">		HubConfig hubConfig = new HubConfig(8088, broker, &quot;testee/iot_hub&quot;, topicPrefix);</span>
+
+		try (
+<span class="nc" id="L49">			GradeP4 p4 = new GradeP4();</span>
+<span class="nc" id="L50">			ece448.iot_sim.Main m = new ece448.iot_sim.Main(config);</span>
+<span class="nc" id="L51">			ece448.iot_sim.Main mex = new ece448.iot_sim.Main(configEx);</span>
+<span class="nc" id="L52">			ece448.iot_hub.Main hub = new ece448.iot_hub.Main(hubConfig, new String[0]))</span>
+		{
+<span class="nc" id="L54">			Grading.run(p4, 10);</span>
+		}
+<span class="nc" id="L56">	}</span>
+
+	static String getSim(String pathParams) throws Exception {
+<span class="nc" id="L59">		return Request.Get(&quot;http://127.0.0.1:8080&quot; + pathParams)</span>
+<span class="nc" id="L60">			.userAgent(&quot;Mozilla/5.0&quot;).connectTimeout(1000)</span>
+<span class="nc" id="L61">			.socketTimeout(1000).execute().returnContent().asString();</span>
+	}
+
+	static String getSimEx(String pathParams) throws Exception {
+<span class="nc" id="L65">		return Request.Get(&quot;http://127.0.0.1:8081&quot; + pathParams)</span>
+<span class="nc" id="L66">			.userAgent(&quot;Mozilla/5.0&quot;).connectTimeout(1000)</span>
+<span class="nc" id="L67">			.socketTimeout(1000).execute().returnContent().asString();</span>
+	}
+
+	static String getHub(String pathParams) throws Exception {
+<span class="nc" id="L71">		return Request.Get(&quot;http://127.0.0.1:8088&quot; + pathParams)</span>
+<span class="nc" id="L72">			.userAgent(&quot;Mozilla/5.0&quot;).connectTimeout(1000)</span>
+<span class="nc" id="L73">			.socketTimeout(1000).execute().returnContent().asString();</span>
+	}
+
+	static String getStates1() throws Exception {
+<span class="nc" id="L77">		TreeMap&lt;String, String&gt; states = new TreeMap&lt;&gt;();</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		for (String name: allPlugNames)</span>
+		{
+<span class="nc" id="L80">			Map&lt;String, Object&gt; plug = mapper.readValue(getHub(&quot;/api/plugs/&quot; + name),</span>
+<span class="nc" id="L81">				new TypeReference&lt;Map&lt;String, Object&gt;&gt;() {});</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">			if (!name.equals((String)plug.get(&quot;name&quot;)))</span>
+<span class="nc" id="L83">				throw new Exception(&quot;invalid name &quot; + name);</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">			states.put(name, &quot;off&quot;.equals((String)plug.get(&quot;state&quot;))? &quot;0&quot;: &quot;1&quot;);</span>
+<span class="nc" id="L85">		}</span>
+<span class="nc" id="L86">		String ret = String.join(&quot;&quot;, states.values());</span>
+<span class="nc" id="L87">		logger.debug(&quot;GradeP4: getState1 {}&quot;, ret);</span>
+<span class="nc" id="L88">		return ret;</span>
+	}
+
+	static String getStates2() throws Exception {
+<span class="nc" id="L92">		TreeMap&lt;String, String&gt; states = new TreeMap&lt;&gt;();</span>
+<span class="nc" id="L93">		HashSet&lt;String&gt; known = new HashSet&lt;&gt;(allPlugNames);</span>
+
+<span class="nc" id="L95">		List&lt;Map&lt;String, Object&gt;&gt; plugs = mapper.readValue(getHub(&quot;/api/plugs&quot;),</span>
+<span class="nc" id="L96">			new TypeReference&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;() {});</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		for (Map&lt;String, Object&gt; plug: plugs)</span>
+		{
+<span class="nc" id="L99">			String name = (String)plug.get(&quot;name&quot;);</span>
+<span class="nc" id="L100">			String state = (String)plug.get(&quot;state&quot;);</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">			if (!known.contains(name))</span>
+<span class="nc" id="L102">				throw new Exception(&quot;invalid plug &quot; + name);</span>
+<span class="nc" id="L103">			known.remove(name);</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">			states.put(name, &quot;off&quot;.equals(state)? &quot;0&quot;: &quot;1&quot;);</span>
+<span class="nc" id="L105">		}</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">		if (!known.isEmpty())</span>
+<span class="nc" id="L107">			throw new Exception(&quot;missing plugs&quot;);</span>
+<span class="nc" id="L108">		String ret = String.join(&quot;&quot;, states.values());</span>
+<span class="nc" id="L109">		logger.debug(&quot;GradeP4: getState2 {}&quot;, ret);</span>
+<span class="nc" id="L110">		return ret;</span>
+	}
+
+	static String getStates3() throws Exception {
+<span class="nc" id="L114">		TreeMap&lt;String, String&gt; states = new TreeMap&lt;&gt;();</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">		for (String name: plugNames)</span>
+		{
+<span class="nc" id="L117">			String ret = getSim(&quot;/&quot;+name);</span>
+<span class="nc bnc" id="L118" title="All 4 branches missed.">			if ((ret.indexOf(name+&quot; is off&quot;) != -1) &amp;&amp; (ret.indexOf(name+&quot; is on&quot;) == -1))</span>
+			{
+<span class="nc" id="L120">				states.put(name, &quot;0&quot;);</span>
+			}
+			else
+			{
+<span class="nc" id="L124">				states.put(name, &quot;1&quot;);</span>
+			}
+<span class="nc" id="L126">		}</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">		for (String name: plugNamesEx)</span>
+		{
+<span class="nc" id="L129">			String ret = getSimEx(&quot;/&quot;+name);</span>
+<span class="nc bnc" id="L130" title="All 4 branches missed.">			if ((ret.indexOf(name+&quot; is off&quot;) != -1) &amp;&amp; (ret.indexOf(name+&quot; is on&quot;) == -1))</span>
+			{
+<span class="nc" id="L132">				states.put(name, &quot;0&quot;);</span>
+			}
+			else
+			{
+<span class="nc" id="L136">				states.put(name, &quot;1&quot;);</span>
+			}
+<span class="nc" id="L138">		}</span>
+<span class="nc" id="L139">		String ret = String.join(&quot;&quot;, states.values());</span>
+<span class="nc" id="L140">		logger.debug(&quot;GradeP4: getState3 {}&quot;, ret);</span>
+<span class="nc" id="L141">		return ret;</span>
+	}
+
+	static String getStates4(MqttController mqtt) throws Exception {
+<span class="nc" id="L145">		TreeMap&lt;String, String&gt; states = new TreeMap&lt;&gt;();</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">		for (String name: allPlugNames)</span>
+		{
+<span class="nc bnc" id="L148" title="All 2 branches missed.">			states.put(name, &quot;off&quot;.equals(mqtt.getState(name))? &quot;0&quot;: &quot;1&quot;);</span>
+<span class="nc" id="L149">		}</span>
+<span class="nc" id="L150">		String ret = String.join(&quot;&quot;, states.values());</span>
+<span class="nc" id="L151">		logger.debug(&quot;GradeP4: getState4 {}&quot;, ret);</span>
+<span class="nc" id="L152">		return ret;</span>
+	}
+
+	static boolean verifyStates(String states, MqttController mqtt) throws Exception {
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		return states.equals(getStates1())</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">			&amp;&amp; states.equals(getStates2())</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">			&amp;&amp; states.equals(getStates3())</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">			&amp;&amp; states.equals(getStates4(mqtt));</span>
+	}
+
+	public boolean testCase00() throws Exception {
+<span class="nc" id="L163">		return &quot;0000000&quot;.equals(getStates1());</span>
+	}
+
+	public boolean testCase01() throws Exception {
+<span class="nc" id="L167">		getHub(&quot;/api/plugs/a?action=on&quot;);</span>
+<span class="nc" id="L168">		getHub(&quot;/api/plugs/c?action=toggle&quot;);</span>
+
+<span class="nc" id="L170">		Thread.sleep(1000);</span>
+<span class="nc" id="L171">		return &quot;1010000&quot;.equals(getStates1());</span>
+	}
+
+	public boolean testCase02() throws Exception {
+<span class="nc" id="L175">		getHub(&quot;/api/plugs/a?action=toggle&quot;);</span>
+<span class="nc" id="L176">		getHub(&quot;/api/plugs/c?action=off&quot;);</span>
+<span class="nc" id="L177">		getHub(&quot;/api/plugs/e?action=on&quot;);</span>
+<span class="nc" id="L178">		getHub(&quot;/api/plugs/g?action=toggle&quot;);</span>
+
+<span class="nc" id="L180">		Thread.sleep(1000);</span>
+<span class="nc" id="L181">		return &quot;0000101&quot;.equals(getStates1());</span>
+	}
+
+	public boolean testCase03() throws Exception {
+<span class="nc" id="L185">		getHub(&quot;/api/plugs/a?action=off&quot;);</span>
+<span class="nc" id="L186">		getHub(&quot;/api/plugs/b?action=on&quot;);</span>
+<span class="nc" id="L187">		getHub(&quot;/api/plugs/c?action=off&quot;);</span>
+<span class="nc" id="L188">		getHub(&quot;/api/plugs/d?action=toggle&quot;);</span>
+<span class="nc" id="L189">		getHub(&quot;/api/plugs/e?action=on&quot;);</span>
+<span class="nc" id="L190">		getHub(&quot;/api/plugs/f?action=off&quot;);</span>
+<span class="nc" id="L191">		getHub(&quot;/api/plugs/g?action=toggle&quot;);</span>
+
+<span class="nc" id="L193">		Thread.sleep(1000);</span>
+<span class="nc" id="L194">		return &quot;0101100&quot;.equals(getStates2());</span>
+	}
+
+	public boolean testCase04() throws Exception {
+<span class="nc" id="L198">		getHub(&quot;/api/plugs/b?action=off&quot;);</span>
+<span class="nc" id="L199">		getHub(&quot;/api/plugs/d?action=on&quot;);</span>
+<span class="nc" id="L200">		getHub(&quot;/api/plugs/f?action=on&quot;);</span>
+
+<span class="nc" id="L202">		Thread.sleep(1000);</span>
+<span class="nc" id="L203">		return &quot;0001110&quot;.equals(getStates2());</span>
+	}
+
+	public boolean testCase05() throws Exception {
+<span class="nc" id="L207">		getSim(&quot;/b?action=on&quot;);</span>
+
+<span class="nc" id="L209">		Thread.sleep(1000);</span>
+<span class="nc" id="L210">		return verifyStates(&quot;0101110&quot;, mqtt);</span>
+	}
+
+	public boolean testCase06() throws Exception {
+<span class="nc" id="L214">		getSimEx(&quot;/d?action=off&quot;);</span>
+
+<span class="nc" id="L216">		Thread.sleep(1000);</span>
+<span class="nc" id="L217">		return verifyStates(&quot;0100110&quot;, mqtt);</span>
+	}
+
+	public boolean testCase07() throws Exception {
+<span class="nc" id="L221">		mqtt.publishAction(&quot;c&quot;, &quot;on&quot;);</span>
+<span class="nc" id="L222">		mqtt.publishAction(&quot;e&quot;, &quot;off&quot;);</span>
+
+<span class="nc" id="L224">		Thread.sleep(1000);</span>
+<span class="nc" id="L225">		return verifyStates(&quot;0110010&quot;, mqtt);</span>
+	}
+
+	public boolean testCase08() throws Exception {
+<span class="nc" id="L229">		getSim(&quot;/a?action=toggle&quot;);</span>
+<span class="nc" id="L230">		mqtt.publishAction(&quot;d&quot;, &quot;toggle&quot;);</span>
+<span class="nc" id="L231">		getSimEx(&quot;/e?action=toggle&quot;);</span>
+<span class="nc" id="L232">		mqtt.publishAction(&quot;g&quot;, &quot;toggle&quot;);</span>
+
+<span class="nc" id="L234">		Thread.sleep(1000);</span>
+<span class="nc" id="L235">		return verifyStates(&quot;1111111&quot;, mqtt);</span>
+	}
+
+	public boolean testCase09() throws Exception {
+<span class="nc" id="L239">		getHub(&quot;/api/plugs/a?action=off&quot;);</span>
+<span class="nc" id="L240">		mqtt.publishAction(&quot;b&quot;, &quot;toggle&quot;);</span>
+<span class="nc" id="L241">		getSim(&quot;/c?action=off&quot;);</span>
+<span class="nc" id="L242">		getSimEx(&quot;/d?action=toggle&quot;);</span>
+<span class="nc" id="L243">		getHub(&quot;/api/plugs/e?action=toggle&quot;);</span>
+<span class="nc" id="L244">		mqtt.publishAction(&quot;f&quot;, &quot;off&quot;);</span>
+<span class="nc" id="L245">		getSimEx(&quot;/g?action=off&quot;);</span>
+
+<span class="nc" id="L247">		Thread.sleep(1000);</span>
+<span class="nc" id="L248">		return verifyStates(&quot;0000000&quot;, mqtt);</span>
+	}	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
