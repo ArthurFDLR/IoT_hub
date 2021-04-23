@@ -1,0 +1,20 @@
+{
+  "httpPort": 8082,
+  "plugNames": [
+    "Wi-Fi Router",
+    "Air purifier",
+    "TV",
+    "Consoles",
+    "Coffee maker",
+    "Dog feeder",
+    "Crockpot",
+    "Hi-Fi system",
+    "Fan living room",
+    "Bedroom lamps",
+    "Lawn sprinklers",
+    "Pool pump",
+    "Garden lights"],
+  "mqttBroker": "tcp://127.0.0.1",
+  "mqttClientId": "iot_sim",
+  "mqttTopicPrefix": "custom_hub"
+}

@@ -1,0 +1,52 @@
+<html>
+
+<head>
+	<title>Members</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+
+	<!-- React -->
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+	<!-- Custom style -->
+	<link rel="stylesheet" type="text/css" href="custom.css">
+
+	<!-- Members App -->
+	<script type="text/babel" src="web/groups_management/groups_management_app.js"></script>
+	<script type="text/babel" src="web/groups_management/groups_management.js"></script>
+	<script type="text/babel" src="web/groups_management/groups_management_view.js"></script>
+
+	<style>
+	.table tr td, .table thead th {
+		text-align: center;
+		vertical-align: middle;
+		padding: 0;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="app_container" />
+	<script type="text/babel">
+		$(document).ready(() => {
+			ReactDOM.render(
+				<GroupsManagementApp />,
+				document.getElementById("app_container"));
+		});
+	</script>
+</body>
+
+</html>
