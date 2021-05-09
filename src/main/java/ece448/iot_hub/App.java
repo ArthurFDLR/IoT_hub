@@ -26,5 +26,11 @@ public class App {
 		return mqtt;
 	}
 
+	@Bean
+	public DatabaseController databaseController() {
+		DatabaseController dbc = new DatabaseController("./data/database.db");
+		return dbc;
+	}
+
 	private static final Logger logger = LoggerFactory.getLogger(App.class);
 }

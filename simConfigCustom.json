@@ -16,5 +16,5 @@
     "Garden lights"],
   "mqttBroker": "tcp://127.0.0.1",
   "mqttClientId": "iot_sim",
-  "mqttTopicPrefix": "custom_hub"
+  "mqttTopicPrefix": "iot_ece448"
 }

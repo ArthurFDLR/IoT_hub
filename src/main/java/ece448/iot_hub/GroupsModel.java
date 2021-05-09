@@ -13,14 +13,15 @@ import org.slf4j.LoggerFactory;
 public class GroupsModel {
     
     private final PlugsModel plugs;
-    private final HashMap<String, ArrayList<String>> groups = new HashMap<>();
+    private final DatabaseController databaseController;
 
-    public GroupsModel(PlugsModel plugs) {
+    public GroupsModel(PlugsModel plugs, DatabaseController databaseController) {
         this.plugs = plugs;
+        this.databaseController = databaseController;
     }
 
     synchronized public void publishAction(String groupName, String action) {
-        for (String plugName : groups.get(groupName)) {
+        for (String plugName : databaseController.getMembers(groupName)) {
             plugs.publishAction(plugName, action);
         }
     }
@@ -30,40 +31,26 @@ public class GroupsModel {
     }
 
     synchronized public void createGroup(String groupName, ArrayList<String> plugsName) {
-        groups.put(groupName, plugsName);
+        databaseController.createGroup(groupName, plugsName);
     }
 
     synchronized public void removeGroup(String groupName) {
-        groups.remove(groupName);
+        databaseController.removeGroup(groupName);
     }
-
-/*
-    synchronized public void removePlugFromGroup(String groupName, String plugName) {
-        groups.get(groupName).remove(plugName);
-    }
-
-    synchronized public void addPlugToGroup(String groupName, String plugName) {
-        if (!groups.get(groupName).contains(plugName)) {
-            groups.get(groupName).add(plugName);
-        }
-    }
-*/
 
     synchronized public HashMap<String, Object> getGroup(String groupName) {
         HashMap<String, Object> ret = new HashMap<>();
         ret.put("name", groupName);
         ArrayList<HashMap<String, Object>> members = new ArrayList<HashMap<String, Object>>();
-        if (groups.get(groupName) != null){
-            for (String plugName : groups.get(groupName)) {
-                members.add(plugs.getPlug(plugName));
-            }
+        for (String plugName : databaseController.getMembers(groupName)) {
+            members.add(plugs.getPlug(plugName));
         }
         ret.put("members", members);
         return ret;
     }
 
     synchronized public List<String> getGroupsNames() {
-        return new ArrayList<String>(groups.keySet());
+        return databaseController.getGroups();
     }
 
     private static final Logger logger = LoggerFactory.getLogger(GroupsModel.class);

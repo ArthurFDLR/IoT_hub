@@ -56,15 +56,18 @@ public class GroupsModelTests {
     private final String broker = new String("tcp://127.0.0.1");
     private final PlugsModel plugs;
     private final GroupsModel groups;
+    private final DatabaseController databaseController;
 
     public GroupsModelTests() throws Exception{
         this.mqtt = new MqttController(broker, "unit_tester/PlugsModel", topicPrefix);
-        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix);
-        this.groups = new GroupsModel(plugs);
+        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix, null);
+        this.databaseController = new DatabaseController("./data/GroupsModelTests.db");
+        this.groups = new GroupsModel(plugs, this.databaseController);
     }
 
     @Test
 	public void testCreateGroup() {
+        databaseController.clear();
         String groupName = new String("New group");
         List<String> groupNames_before = groups.getGroupsNames();
         assertFalse(groupNames_before.contains(groupName));
@@ -77,6 +80,7 @@ public class GroupsModelTests {
 
     @Test
 	public void testCreatePopulatedGroup() {
+        databaseController.clear();
         String groupName = new String("myGroup");
         ArrayList<String> group = new ArrayList<String>();
         group.add("x");
@@ -91,6 +95,7 @@ public class GroupsModelTests {
 
     @Test
     public void testGetUnknownGroup() {
+        databaseController.clear();
         String groupName = new String("unknownGroup");
         ArrayList<HashMap<String, Object>> members = mapper.convertValue(groups.getGroup(groupName).get("members"), new TypeReference<ArrayList<HashMap<String, Object>>>() {});
         assertEquals(members.size(), 0);
@@ -98,6 +103,7 @@ public class GroupsModelTests {
 
     @Test
     public void testRemoveGroup() {
+        databaseController.clear();
         String groupName = new String("group to delete");
         groups.createGroup("Another group");
         groups.createGroup(groupName);
@@ -110,6 +116,7 @@ public class GroupsModelTests {
 
     @Test
 	public void testPublish() {
+        databaseController.clear();
         String groupName = new String("myGroupPublish");
         String action = new String("action");
         ArrayList<String> group = new ArrayList<String>();

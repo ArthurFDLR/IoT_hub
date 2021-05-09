@@ -21,10 +21,12 @@ public class PlugsModel {
 
     private final HashMap<String, String> states = new HashMap<>();
     private final HashMap<String, String> powers = new HashMap<>();
+    private final DatabaseController databaseController;
 
-    public PlugsModel(MqttClient mqttClient, @Value("${mqtt.topicPrefix}") String topicPrefix) {
+    public PlugsModel(MqttClient mqttClient, @Value("${mqtt.topicPrefix}") String topicPrefix, DatabaseController databaseController) {
         this.client = mqttClient;
         this.topicPrefix = topicPrefix;
+        this.databaseController = databaseController;
         try
         {
             this.client.subscribe(this.topicPrefix+"/update/#", this::handleUpdate);
@@ -40,8 +42,6 @@ public class PlugsModel {
         if ((nameUpdate.length != 3) || !nameUpdate[0].equals("update"))
             return; // ignore unknown format
 
-        //logger.info("MQTT Receive: "+topic+" - "+msg.toString());
-
         switch (nameUpdate[2])
         {
         case "state":
@@ -49,6 +49,9 @@ public class PlugsModel {
             break;
         case "power":
             powers.put(nameUpdate[1], msg.toString());
+            if (databaseController != null) {
+                databaseController.insertPower(nameUpdate[1], Float.parseFloat(msg.toString()));
+            }
             break;
         default:
             return;
@@ -59,7 +62,6 @@ public class PlugsModel {
         String topic = topicPrefix+"/action/"+plugName+"/"+action;
         try
         {
-            //logger.info("MQTT Publish: "+topic+" - "+action);
             client.publish(topic, new MqttMessage());
         }
         catch (Exception e)

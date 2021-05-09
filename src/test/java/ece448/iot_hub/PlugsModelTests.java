@@ -55,7 +55,7 @@ public class PlugsModelTests {
 
     public PlugsModelTests() throws Exception{
         this.mqtt = new MqttController(broker, "unit_tester/PlugsModel", topicPrefix);
-        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix);
+        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix, null);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class PlugsModelTests {
         String plugName = new String("name");
         String action = new String("action");
         String topic = mqtt.getLastTopic();
-        PlugsModel plugsError = new PlugsModel(new MqttClient(broker, "non_working" , new MemoryPersistence()), topicPrefix);
+        PlugsModel plugsError = new PlugsModel(new MqttClient(broker, "non_working" , new MemoryPersistence()), topicPrefix, null);
         plugsError.publishAction(plugName, action);
         assertTrue(topic.equals(mqtt.getLastTopic()));
     }
@@ -112,7 +112,7 @@ public class PlugsModelTests {
 
     @Test
 	public void testGetAll() {
-        PlugsModel plugsFresh = new PlugsModel(mqtt.client, topicPrefix);
+        PlugsModel plugsFresh = new PlugsModel(mqtt.client, topicPrefix, null);
         HashMap<String, String> states = new HashMap<>();
         HashMap<String, String> powers = new HashMap<>();
         List<String> names = new ArrayList<String>();

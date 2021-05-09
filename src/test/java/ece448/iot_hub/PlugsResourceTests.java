@@ -59,7 +59,7 @@ public class PlugsResourceTests {
 
     public PlugsResourceTests() throws Exception{
         this.mqtt = new MqttController(broker, "unit_tester/PlugsModel", topicPrefix);
-        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix);
+        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix, null);
         this.plugsRes = new PlugsResource(this.plugs);
     }
 

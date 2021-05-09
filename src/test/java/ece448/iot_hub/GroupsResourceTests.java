@@ -56,16 +56,19 @@ public class GroupsResourceTests {
     private final PlugsModel plugs;
     private final GroupsModel groups;
     private final GroupsResource groupsRes;
+    private final DatabaseController databaseController;
 
     public GroupsResourceTests() throws Exception{
         this.mqtt = new MqttController(broker, "unit_tester/PlugsModel", topicPrefix);
-        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix);
-        this.groups = new GroupsModel(plugs);
+        this.plugs = new PlugsModel(this.mqtt.client, topicPrefix, null);
+        this.databaseController = new DatabaseController("./data/GroupsResourceTests.db");
+        this.groups = new GroupsModel(plugs, this.databaseController);
         this.groupsRes = new GroupsResource(groups);
     }
 
     @Test
     public void testGetGroup() throws Exception{
+        databaseController.clear();
         String groupName = new String("myGroup");
         String action = new String("action");
         ArrayList<String> group = new ArrayList<String>();
@@ -92,6 +95,7 @@ public class GroupsResourceTests {
 
     @Test
     public void testGetGroups() throws Exception{
+        databaseController.clear();
         String groupName = new String("myGroup");
         ArrayList<String> group = new ArrayList<String>();
         group.add("x");
@@ -110,6 +114,7 @@ public class GroupsResourceTests {
 
     @Test
     public void testCreateDeleteGroup() throws Exception{
+        databaseController.clear();
         int nbrGroups = groups.getGroupsNames().size();
         String groupName = new String("myNewGroup");
         ArrayList<String> group = new ArrayList<String>();
@@ -128,6 +133,7 @@ public class GroupsResourceTests {
 
     @Test
     public void testDeleteGroup() throws Exception{
+        databaseController.clear();
         String groupName = new String("myNewGroup");
         ArrayList<String> group = new ArrayList<String>();
         group.add("a");

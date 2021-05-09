@@ -24,7 +24,8 @@ dependencies {
 	implementation(
 		'org.apache.httpcomponents:fluent-hc:4.5.9',
 		'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.2',
-		'org.springframework.boot:spring-boot-starter-web')
+		'org.springframework.boot:spring-boot-starter-web',
+		files('lib/sqlite-jdbc-3.32.3.2.jar'))
 	testImplementation('junit:junit:4.12')
 }
 
