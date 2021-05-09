@@ -1,9 +1,13 @@
 # Build files
 build/
 .gradle/
+.settings/
+bin/
+.project
 
 # Compiled class file
 *.class
+*.classpath
 
 # Log file
 *.log

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.io.File;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -61,6 +62,10 @@ public class GroupsModelTests {
     public GroupsModelTests() throws Exception{
         this.mqtt = new MqttController(broker, "unit_tester/PlugsModel", topicPrefix);
         this.plugs = new PlugsModel(this.mqtt.client, topicPrefix, null);
+        File dataDir = new File("./data");
+		if (!dataDir.exists()){
+			dataDir.mkdirs();
+		}
         this.databaseController = new DatabaseController("./data/GroupsModelTests.db");
         this.groups = new GroupsModel(plugs, this.databaseController);
     }

@@ -1,5 +1,7 @@
 package ece448.iot_hub;
 
+import java.io.File;
+
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,10 @@ public class App {
 
 	@Bean
 	public DatabaseController databaseController() {
+		File dataDir = new File("./data");
+		if (!dataDir.exists()){
+			dataDir.mkdirs();
+		}
 		DatabaseController dbc = new DatabaseController("./data/database.db");
 		return dbc;
 	}
