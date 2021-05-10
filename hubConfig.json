@@ -1,6 +1,7 @@
 {
   "httpPort": 8088,
-  "mqttBroker": "tcp://127.0.0.1",
+  "mqttBroker": "tcp://127.0.0.1:1883",
   "mqttClientId": "iot_hub",
-  "mqttTopicPrefix": "iot_ece448"
+  "mqttTopicPrefix": "iot_hub_network",
+  "databaseFileName": "myIoTHub.db"
 }

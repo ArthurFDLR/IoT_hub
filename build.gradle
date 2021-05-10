@@ -3,7 +3,7 @@ plugins {
 	id 'idea'
 	id 'eclipse'
 	id 'jacoco'
-	id 'org.springframework.boot' version '1.5.22.RELEASE'
+	id "org.springframework.boot" version "2.4.5"
 	id 'io.spring.dependency-management' version "1.0.8.RELEASE"
 }
 
@@ -47,10 +47,6 @@ sourceSets {
 			srcDirs = ['src/test/resources']
 		}
 	}
-}
-
-task clear_mqtt(type:Exec) {
-	commandLine 'sh', './clear_mqtt.sh'
 }
 
 task iot_sim(type: JavaExec, dependsOn: [test, jacocoTestReport]) {

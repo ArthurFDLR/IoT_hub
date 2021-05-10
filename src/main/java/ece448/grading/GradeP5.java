@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.io.File;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,9 +42,11 @@ public class GradeP5 implements AutoCloseable {
 	}
 
 	public static void main(String[] args) throws Exception {
+		File dbFile = new File("./data/grade_p5.db"); 
+		dbFile.delete();
 		SimConfig config = new SimConfig(8080, plugNames, broker, "testee/iot_sim", topicPrefix);
 		SimConfig configEx = new SimConfig(8081, plugNamesEx, broker, "ex_testee/iot_sim", topicPrefix);
-		HubConfig hubConfig = new HubConfig(8088, broker, "testee/iot_hub", topicPrefix);
+		HubConfig hubConfig = new HubConfig(8088, broker, "testee/iot_hub", topicPrefix, "grade_p5.db");
 
 		try (
 			GradeP5 p5 = new GradeP5();

@@ -35,6 +35,7 @@ public class Main implements AutoCloseable {
 		props.put("mqtt.broker", config.getMqttBroker());
 		props.put("mqtt.clientId", config.getMqttClientId());
 		props.put("mqtt.topicPrefix", config.getMqttTopicPrefix());
+		props.put("database.fileName", config.getDatabaseFileName());
 		SpringApplication app = new SpringApplication(App.class);
 		app.setDefaultProperties(props);
 		this.appCtx = app.run(args);

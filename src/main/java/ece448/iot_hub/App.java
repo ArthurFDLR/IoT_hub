@@ -5,6 +5,7 @@ import java.io.File;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -29,12 +30,12 @@ public class App {
 	}
 
 	@Bean
-	public DatabaseController databaseController() {
+	public DatabaseController databaseController(@Value("${database.fileName}") String databaseFileName) {
 		File dataDir = new File("./data");
 		if (!dataDir.exists()){
 			dataDir.mkdirs();
 		}
-		DatabaseController dbc = new DatabaseController("./data/database.db");
+		DatabaseController dbc = new DatabaseController("./data/"+databaseFileName);
 		return dbc;
 	}
 

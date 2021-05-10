@@ -99,7 +99,7 @@ public class PlugsResourceTests {
 
     @Test
     public void testGetPlugsEmpty() throws Exception{
-        List<Map<String, String>> plugJSON = mapper.convertValue(plugsRes.getPlugs(), new TypeReference<List<Map<String, Object>>>() {});
+        List<Map<String, String>> plugJSON = mapper.convertValue(plugsRes.getPlugs(), new TypeReference<List<Map<String, String>>>() {});
         assertTrue(plugJSON.size() == plugs.getNames().size());
     }
 
@@ -115,7 +115,7 @@ public class PlugsResourceTests {
         try {Thread.sleep(1000);}
         catch (Exception e) {logger.error("Sleep fail");}
 
-        List<Map<String, String>> plugJSON = mapper.convertValue(plugsRes.getPlugs(), new TypeReference<List<Map<String, Object>>>() {});
+        List<Map<String, String>> plugJSON = mapper.convertValue(plugsRes.getPlugs(), new TypeReference<List<Map<String, String>>>() {});
         assertTrue(plugJSON.size() == plugNames.length);
         for (int i = 0; i < plugJSON.size(); i++) {
             assertTrue(plugJSON.get(i).get("name").equals(plugNames[i]));

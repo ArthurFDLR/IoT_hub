@@ -4,7 +4,7 @@
     "x",
     "y",
     "z"],
-  "mqttBroker": "tcp://127.0.0.1",
+  "mqttBroker": "tcp://127.0.0.1:1883",
   "mqttClientId": "iot_sim_ex",
-  "mqttTopicPrefix": "iot_ece448"
+  "mqttTopicPrefix": "iot_hub_network"
 }

@@ -9,17 +9,20 @@ public class HubConfig {
 	private final String mqttBroker;
 	private final String mqttClientId;
 	private final String mqttTopicPrefix;
+	private final String databaseFileName;
 
 	@JsonCreator
 	public HubConfig(
 		@JsonProperty(value = "httpPort", required = true) int httpPort,
 		@JsonProperty(value = "mqttBroker", required = true) String mqttBroker,
 		@JsonProperty(value = "mqttClientId", required = true) String mqttClientId,
-		@JsonProperty(value = "mqttTopicPrefix", required = true) String mqttTopicPrefix) {
+		@JsonProperty(value = "mqttTopicPrefix", required = true) String mqttTopicPrefix,
+		@JsonProperty(value = "databaseFileName", required = true) String databaseFileName) {
 		this.httpPort = httpPort;
 		this.mqttBroker = mqttBroker;
 		this.mqttClientId = mqttClientId;
 		this.mqttTopicPrefix = mqttTopicPrefix;
+		this.databaseFileName = databaseFileName;
 	}
 
 	public int getHttpPort() {
@@ -36,5 +39,9 @@ public class HubConfig {
 
 	public String getMqttTopicPrefix() {
 		return mqttTopicPrefix;
+	}
+
+	public String getDatabaseFileName() {
+		return databaseFileName;
 	}
 }
