@@ -10,7 +10,7 @@ plugins {
 defaultTasks 'clean', 'test', 'jacocoTestReport'
 
 compileJava.options.encoding = 'UTF-8'
-group = 'iot_ece448'
+group = 'iot_hub'
 version = '1.0.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -51,32 +51,32 @@ sourceSets {
 
 task iot_sim(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
 	classpath sourceSets.main.runtimeClasspath
-	main = 'ece448.iot_sim.Main'
+	main = 'iot_sim.Main'
 	if (project.hasProperty("config"))
 		args project.getProperty('config')
 }
 
 task iot_sim_ex(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
 	classpath sourceSets.main.runtimeClasspath
-	main = 'ece448.iot_sim.Main'
+	main = 'iot_sim.Main'
 	args 'simConfigEx.json'
 }
 
 task iot_sim_custom(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
 	classpath sourceSets.main.runtimeClasspath
-	main = 'ece448.iot_sim.Main'
+	main = 'iot_sim.Main'
 	args 'simConfigCustom.json'
 }
 
 task iot_hub(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
 	classpath sourceSets.main.runtimeClasspath
-	main = 'ece448.iot_hub.Main'
+	main = 'iot_hub.Main'
 }
 
 6.times { proj ->
-	task "grade_p$proj"(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
+	task "test_integration_$proj"(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
 		classpath sourceSets.main.runtimeClasspath
-		main = "ece448.grading.GradeP$proj"
+		main = "test_integration.Integration_$proj"
 	}
 }
 
