@@ -1,10 +1,10 @@
-package test_integration;
+package integration;
 
 import iot_sim.PlugSim;
 
 public class Integration_1 {
 	public static void main(String[] args) {
-		TestIntegration.run(new Integration_1(), 10);
+		Integration.run(new Integration_1(), 10);
 	}
 
 	public boolean testCase00() {

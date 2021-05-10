@@ -62,22 +62,19 @@ task iot_sim_ex(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
 	args 'simConfigEx.json'
 }
 
-task iot_sim_custom(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
-	classpath sourceSets.main.runtimeClasspath
-	main = 'iot_sim.Main'
-	args 'simConfigCustom.json'
-}
-
 task iot_hub(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
 	classpath sourceSets.main.runtimeClasspath
 	main = 'iot_hub.Main'
 }
 
 6.times { proj ->
-	task "test_integration_$proj"(type: JavaExec, dependsOn: [test, jacocoTestReport]) {
-		classpath sourceSets.main.runtimeClasspath
-		main = "test_integration.Integration_$proj"
+	task "integration_$proj"(type: JavaExec) {
+		classpath sourceSets.test.runtimeClasspath
+		main = "integration.Integration_$proj"
 	}
+}
+
+task test_integration(dependsOn: [integration_1,integration_2,integration_3,integration_4,integration_5]) {
 }
 
 jacoco {

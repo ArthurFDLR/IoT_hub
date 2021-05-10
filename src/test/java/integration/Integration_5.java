@@ -1,4 +1,4 @@
-package test_integration;
+package integration;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import iot_sim.SimConfig;
-import test_integration.Integration_3.MqttController;
+import integration.Integration_3.MqttController;
 import iot_hub.HubConfig;
 
 public class Integration_5 implements AutoCloseable {
@@ -42,11 +42,11 @@ public class Integration_5 implements AutoCloseable {
 	}
 
 	public static void main(String[] args) throws Exception {
-		File dbFile = new File("./data/test_integration_5.db"); 
+		File dbFile = new File("./data/integration_5.db"); 
 		dbFile.delete();
 		SimConfig config = new SimConfig(8080, plugNames, broker, "testee/iot_sim", topicPrefix);
 		SimConfig configEx = new SimConfig(8081, plugNamesEx, broker, "ex_testee/iot_sim", topicPrefix);
-		HubConfig hubConfig = new HubConfig(8088, broker, "testee/iot_hub", topicPrefix, "test_integration_5.db");
+		HubConfig hubConfig = new HubConfig(8088, broker, "testee/iot_hub", topicPrefix, "integration_5.db");
 
 		try (
 			Integration_5 p5 = new Integration_5();
@@ -54,7 +54,7 @@ public class Integration_5 implements AutoCloseable {
 			iot_sim.Main mex = new iot_sim.Main(configEx);
 			iot_hub.Main hub = new iot_hub.Main(hubConfig, new String[0]))
 		{
-			TestIntegration.run(p5, 10);
+			Integration.run(p5, 10);
 		}
 	}
 

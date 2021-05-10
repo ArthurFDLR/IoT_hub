@@ -1,4 +1,4 @@
-package test_integration;
+package integration;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ import iot_sim.Main;
 
 public class Integration_2 {
 	private static final String broker = "tcp://127.0.0.1";
-	private static final String topicPrefix = System.currentTimeMillis()+"/integration_3/iot_hub";
+	private static final String topicPrefix = System.currentTimeMillis()+"/integration_2/iot_hub";
 
 	public static void main(String[] args) throws Exception {
 		SimConfig config = new SimConfig(
@@ -17,7 +17,7 @@ public class Integration_2 {
 
 		try (Main m = new Main(config))
 		{
-			TestIntegration.run(new Integration_2(), 10);
+			Integration.run(new Integration_2(), 10);
 		}
 	}
 

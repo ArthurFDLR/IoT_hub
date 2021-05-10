@@ -1,4 +1,4 @@
-package test_integration;
+package integration;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -124,7 +124,7 @@ public class Integration_3 implements AutoCloseable {
 
 		try (Integration_3 p3 = new Integration_3(); Main m = new Main(config))
 		{
-			TestIntegration.run(p3, 10);
+			Integration.run(p3, 10);
 		}
 	}
 

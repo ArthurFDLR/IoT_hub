@@ -1,4 +1,4 @@
-package test_integration;
+package integration;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.ExecutionException;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class TestIntegration {
+class Integration {
 	static void run(Object obj, int n) {
 		ExecutorService exe = Executors.newSingleThreadExecutor();
 		String className = obj.getClass().getSimpleName();		
@@ -32,35 +32,35 @@ class TestIntegration {
 					if (f.get(60, TimeUnit.SECONDS))
 					{
 						System.out.println("*************************************************************");
-						System.out.printf("******** %s-%s: success%n", className, testCaseName);
+						System.out.printf("******** %s.%s: success%n", className, testCaseName);
 						System.out.println("*************************************************************");
-						logger.info("{}-{}: success", className, testCaseName);
+						logger.info("{}.{}: success", className, testCaseName);
 						++passed;
 					}
 					else
 					{
 						System.out.println("*************************************************************");
-						System.out.printf("******** %s-%s: failed%n", className, testCaseName);
+						System.out.printf("******** %s.%s: failed%n", className, testCaseName);
 						System.out.println("*************************************************************");
-						logger.info("{}-{}: failed", className, testCaseName);
+						logger.info("{}.{}: failed", className, testCaseName);
 					}
 				}
 				catch (ExecutionException e)
 				{
 					System.out.println("*************************************************************");
-					System.out.printf("******** %s-%s: exception %s%n", className, testCaseName, e.getCause().getCause().toString());
+					System.out.printf("******** %s.%s: exception %s%n", className, testCaseName, e.getCause().getCause().toString());
 					System.out.println("*************************************************************");
-					logger.info("{}-{}: exception {}", className, testCaseName, e.getCause().getCause().toString());
-					logger.debug("{}-{}: exception", className, testCaseName, e);
+					logger.info("{}.{}: exception {}", className, testCaseName, e.getCause().getCause().toString());
+					logger.debug("{}.{}: exception", className, testCaseName, e);
 				}
 				catch (TimeoutException e)
 				{
-					logger.info("{}-{}: timeout, abort", className, testCaseName);
+					logger.info("{}.{}: timeout, abort", className, testCaseName);
 					throw new RuntimeException(e);
 				}
 				catch (Throwable t)
 				{
-					logger.info("{}-{}: unknown error, abort", className, testCaseName, t);
+					logger.info("{}.{}: unknown error, abort", className, testCaseName, t);
 					throw new RuntimeException(t);
 				}
 			}
@@ -72,5 +72,5 @@ class TestIntegration {
 		}
 	}
 
-	private static final Logger logger = LoggerFactory.getLogger(TestIntegration.class);
+	private static final Logger logger = LoggerFactory.getLogger(Integration.class);
 }
