@@ -69,13 +69,13 @@ public class PlugsResourceTests {
         String state = new String("on");
         String power = new String("42.960");
 
-        Map<String, String> plugJSON = mapper.convertValue(plugsRes.getPlug(plugName, null), Map.class);
+        Map<String, String> plugJSON = mapper.convertValue(plugsRes.getPlug(plugName, null), new TypeReference<Map<String, String>>(){});
         assertTrue(plugJSON.get("power") == null);
         assertTrue(plugJSON.get("state") == null);
 
         plugs.handleUpdate(topicPrefix+"/update/"+plugName+"/state", new MqttMessage(state.getBytes()));
         plugs.handleUpdate(topicPrefix+"/update/"+plugName+"/power", new MqttMessage(power.getBytes()));
-        plugJSON = mapper.convertValue(plugsRes.getPlug(plugName, null), Map.class);
+        plugJSON = mapper.convertValue(plugsRes.getPlug(plugName, null), new TypeReference<Map<String, String>>(){});
         assertTrue(plugJSON.get("power").equals(power));
         assertTrue(plugJSON.get("state").equals(state));
     }
@@ -89,7 +89,7 @@ public class PlugsResourceTests {
 
         plugs.handleUpdate(topicPrefix+"/update/"+plugName+"/state", new MqttMessage(state.getBytes()));
         plugs.handleUpdate(topicPrefix+"/update/"+plugName+"/power", new MqttMessage(power.getBytes()));
-        Map<String, String> plugJSON = mapper.convertValue(plugsRes.getPlug(plugName, action), Map.class);
+        Map<String, String> plugJSON = mapper.convertValue(plugsRes.getPlug(plugName, action), new TypeReference<Map<String, String>>(){});
         assertTrue(plugJSON.get("power").equals(power));
         assertTrue(plugJSON.get("state").equals(state));
         try {Thread.sleep(1000);}

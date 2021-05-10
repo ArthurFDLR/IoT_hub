@@ -11,10 +11,9 @@ import org.junit.Test;
 public class MQTTCommandsTests {
 
     private final ArrayList<PlugSim> plugs = new ArrayList<>();
-    private final String topicPrefix = new String();
+    private final String topicPrefix = "unit/tests";
 
     public MQTTCommandsTests() {
-        String topicPrefix = "unit/tests";
         this.plugs.add(new PlugSim("Antenna"));
         this.plugs.add(new PlugSim("Bed.200"));
         this.plugs.add(new PlugSim("Computer"));
@@ -22,7 +21,6 @@ public class MQTTCommandsTests {
 
     @Test
 	public void testInit() {
-        MQTTCommands command = new MQTTCommands(plugs, "unit_tests");
         for (PlugSim plug : this.plugs)
         {
             assertFalse(plug.isOn());

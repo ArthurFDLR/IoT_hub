@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.UUID;
 
 import org.apache.http.client.fluent.Request;
 import org.eclipse.paho.client.mqttv3.MqttClient;

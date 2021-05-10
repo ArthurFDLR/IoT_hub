@@ -20,7 +20,6 @@ public class HTTPCommandsTests {
 
     @Test
 	public void testInit() {
-        HTTPCommands command = new HTTPCommands(plugs);
         for (PlugSim plug : this.plugs)
         {
             assertFalse(plug.isOn());

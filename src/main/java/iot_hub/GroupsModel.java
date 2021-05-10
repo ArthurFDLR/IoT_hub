@@ -6,9 +6,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 @Component
 public class GroupsModel {
     
@@ -52,6 +49,4 @@ public class GroupsModel {
     synchronized public List<String> getGroupsNames() {
         return databaseController.getGroups();
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(GroupsModel.class);
 }

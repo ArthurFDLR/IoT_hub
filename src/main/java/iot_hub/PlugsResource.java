@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 @RestController
 public class PlugsResource {
     
@@ -25,7 +22,6 @@ public class PlugsResource {
     public Object getPlug(
         @PathVariable("plug") String plug,
         @RequestParam(value = "action", required = false) String action ){
-            //logger.info("REST /api/plugs/"+plug+" - " + action);
             if (action != null){
                 plugs.publishAction(plug, action);
             }
@@ -38,9 +34,6 @@ public class PlugsResource {
         for (String plug : plugs.getNames()){
             ret.add(plugs.getPlug(plug));
         }
-        //logger.info("REST /api/plugs/");
         return ret;
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(PlugsResource.class);
 }
