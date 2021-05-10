@@ -1,11 +1,11 @@
 <h1 align = "center"> IoT Hub </h1>
 
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 <p align="center">
     <img src="./.github/gui_view.png" alt="Control panel page" width="80%" style="border-radius: 5px;">
 </p>
-
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 Deploy a server connected to an MQTT broker to control your Internet-of-Things devices through a Web App including, GUI, RESTful API, and an SQL database! Built with [Spring Boot](https://github.com/spring-projects/spring-boot), [Bootstrap 4](https://github.com/twbs/bootstrap), [Eclipse Paho Java Client](https://github.com/eclipse/paho.mqtt.java), and [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc).
 
@@ -13,6 +13,7 @@ Deploy a server connected to an MQTT broker to control your Internet-of-Things d
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Launch the IoT-Hub](#launch-the-iot-hub)
+  - [GUI video presentation](#gui-video-presentation)
 - [Usage](#usage)
   - [Simulated plugs control](#simulated-plugs-control)
   - [MQTT messages](#mqtt-messages)
@@ -71,6 +72,8 @@ You need an MQTT broker running on port `tcp://127.0.0.1:1883` to execute instal
    * `mqttBroker`: Address of your MQTT broker.
    * `mqttClientId`: Client ID used by the simulator to connect to the broker.
    * `mqttTopicPrefix`: Prefix of all MQTT topics used by the simulator. It must be the same as the one used by the web app.
+
+### [GUI video presentation](https://youtu.be/wKBkg99ltxM)
 
 <!-- USAGE EXAMPLES -->
 ## Usage
