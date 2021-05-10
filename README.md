@@ -53,7 +53,7 @@
 </p>
 
 <p align="center">
-    <img src="./.github/groups_view.png" alt="Control panel page" width="80%" style="border-radius: 5px;">
+    <img src="./.github/groups_view.png" alt="Groups management page" width="80%" style="border-radius: 5px;">
 </p>
 
 <!-- GETTING STARTED -->
