@@ -8,10 +8,12 @@ import iot_sim.SimConfig;
 import iot_sim.Main;
 
 public class Integration_2 {
+	private static final String broker = "tcp://127.0.0.1";
+	private static final String topicPrefix = System.currentTimeMillis()+"/integration_3/iot_hub";
 
 	public static void main(String[] args) throws Exception {
 		SimConfig config = new SimConfig(
-			8080, Arrays.asList("xxxx", "yyyy", "zzzz.789"), null, null, null);
+			8080, Arrays.asList("xxxx", "yyyy", "zzzz.789"), broker, "testee/iot_sim", topicPrefix);
 
 		try (Main m = new Main(config))
 		{
