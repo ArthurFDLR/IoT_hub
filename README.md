@@ -1,52 +1,27 @@
+<h1 align = "center"> IoT Hub </h1>
+
+<p align="center">
+    <img src="./.github/control_panel_view.png" alt="Control panel page" width="80%" style="border-radius: 5px;">
+</p>
+
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <h3 align="center">IoT Hub</h3>
+Deploy a server connected to an MQTT brocker to control your Internet-of-Things devices through a GUI or a RESTful API! Built with [Spring Boot](https://github.com/spring-projects/spring-boot), [Bootstrap 4](https://github.com/twbs/bootstrap), [Eclipse Paho Java Client](https://github.com/eclipse/paho.mqtt.java), and [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc).
 
-  <p align="center">
-    Deploy a server connected to an MQTT brocker to control your Internet-of-Things devices through a GUI or a RESTful API!
-  </p>
-</p>
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#launch-the-iot-hub">Launch the IoT-Hub</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
-
-
+- [About The Project](#about-the-project)
+  - [The Web-App](#the-web-app)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Launch the IoT-Hub](#launch-the-iot-hub)
+- [Usage](#usage)
+- [License](#license)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-### Built With
-
-* [Spring Boot](https://github.com/spring-projects/spring-boot)
-* [Bootstrap 4](https://github.com/twbs/bootstrap)
-* [Eclipse Paho Java Client](https://github.com/eclipse/paho.mqtt.java)
-* [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc)
-
-### Web-App
+### The Web-App
 
 <p align="center">
     <img src="./.github/control_panel_view.png" alt="Control panel page" width="80%" style="border-radius: 5px;">
