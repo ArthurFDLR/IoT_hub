@@ -7,7 +7,7 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-Deploy a server connected to an MQTT brocker to control your Internet-of-Things devices through a GUI or a RESTful API! Built with [Spring Boot](https://github.com/spring-projects/spring-boot), [Bootstrap 4](https://github.com/twbs/bootstrap), [Eclipse Paho Java Client](https://github.com/eclipse/paho.mqtt.java), and [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc).
+Deploy a server connected to an MQTT broker to control your Internet-of-Things devices through a Web App including, GUI, RESTful API, and an SQL database! Built with [Spring Boot](https://github.com/spring-projects/spring-boot), [Bootstrap 4](https://github.com/twbs/bootstrap), [Eclipse Paho Java Client](https://github.com/eclipse/paho.mqtt.java), and [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc).
 
 - [About The Project](#about-the-project)
   - [The Web-App](#the-web-app)
@@ -28,7 +28,7 @@ Deploy a server connected to an MQTT brocker to control your Internet-of-Things 
 </p>
 
 <p align="center">
-    <img src="./.github/groups_view.png" alt="Groups management page" width="80%" style="border-radius: 5px;">
+    <img src="./.github/groups_management_view.png" alt="Groups management page" width="80%" style="border-radius: 5px;">
 </p>
 
 <!-- GETTING STARTED -->
