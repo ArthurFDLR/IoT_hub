@@ -309,9 +309,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
    <tbody>
       <tr>
          <td id="a1">DatabaseController</td>
-         <td class="bar" id="b0"><img src="./.github/markdown//redbar.gif" width="46" height="10" title="168" alt="168"/><img src="./.github/markdown//greenbar.gif" width="73" height="10" title="261" alt="261"/></td>
+         <td class="bar" id="b0"><img src="./.github/markdown/redbar.gif" width="46" height="10" title="168" alt="168"/><img src="./.github/markdown/greenbar.gif" width="73" height="10" title="261" alt="261"/></td>
          <td class="ctr2" id="c4">60%</td>
-         <td class="bar" id="d0"><img src="./.github/markdown//redbar.gif" width="60" height="10" title="6" alt="6"/><img src="./.github/markdown//greenbar.gif" width="60" height="10" title="6" alt="6"/></td>
+         <td class="bar" id="d0"><img src="./.github/markdown/redbar.gif" width="60" height="10" title="6" alt="6"/><img src="./.github/markdown/greenbar.gif" width="60" height="10" title="6" alt="6"/></td>
          <td class="ctr2" id="e4">50%</td>
          <td class="ctr1" id="f1">5</td>
          <td class="ctr2" id="g0">15</td>
@@ -324,9 +324,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
       </tr>
       <tr>
          <td id="a5">Main</td>
-         <td class="bar" id="b1"><img src="./.github/markdown//redbar.gif" width="31" height="10" title="112" alt="112"/></td>
+         <td class="bar" id="b1"><img src="./.github/markdown/redbar.gif" width="31" height="10" title="112" alt="112"/></td>
          <td class="ctr2" id="c5">0%</td>
-         <td class="bar" id="d1"><img src="./.github/markdown//redbar.gif" width="20" height="10" title="2" alt="2"/></td>
+         <td class="bar" id="d1"><img src="./.github/markdown/redbar.gif" width="20" height="10" title="2" alt="2"/></td>
          <td class="ctr2" id="e5">0%</td>
          <td class="ctr1" id="f2">5</td>
          <td class="ctr2" id="g5">5</td>
@@ -339,9 +339,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
       </tr>
       <tr>
          <td id="a0">App</td>
-         <td class="bar" id="b2"><img src="./.github/markdown//redbar.gif" width="16" height="10" title="58" alt="58"/></td>
+         <td class="bar" id="b2"><img src="./.github/markdown/redbar.gif" width="16" height="10" title="58" alt="58"/></td>
          <td class="ctr2" id="c6">0%</td>
-         <td class="bar" id="d2"><img src="./.github/markdown//redbar.gif" width="20" height="10" title="2" alt="2"/></td>
+         <td class="bar" id="d2"><img src="./.github/markdown/redbar.gif" width="20" height="10" title="2" alt="2"/></td>
          <td class="ctr2" id="e6">0%</td>
          <td class="ctr1" id="f3">5</td>
          <td class="ctr2" id="g6">5</td>
@@ -354,7 +354,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
       </tr>
       <tr>
          <td id="a4">HubConfig</td>
-         <td class="bar" id="b3"><img src="./.github/markdown//redbar.gif" width="9" height="10" title="33" alt="33"/></td>
+         <td class="bar" id="b3"><img src="./.github/markdown/redbar.gif" width="9" height="10" title="33" alt="33"/></td>
          <td class="ctr2" id="c7">0%</td>
          <td class="bar" id="d7"/>
          <td class="ctr2" id="e7">n/a</td>
@@ -369,9 +369,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
       </tr>
       <tr>
          <td id="a6">PlugsModel</td>
-         <td class="bar" id="b4"><img src="./.github/markdown//redbar.gif" width="3" height="10" title="11" alt="11"/><img src="./.github/markdown//greenbar.gif" width="52" height="10" title="188" alt="188"/></td>
+         <td class="bar" id="b4"><img src="./.github/markdown/redbar.gif" width="3" height="10" title="11" alt="11"/><img src="./.github/markdown/greenbar.gif" width="52" height="10" title="188" alt="188"/></td>
          <td class="ctr2" id="c3">94%</td>
-         <td class="bar" id="d3"><img src="./.github/markdown//redbar.gif" width="10" height="10" title="1" alt="1"/><img src="./.github/markdown//greenbar.gif" width="80" height="10" title="8" alt="8"/></td>
+         <td class="bar" id="d3"><img src="./.github/markdown/redbar.gif" width="10" height="10" title="1" alt="1"/><img src="./.github/markdown/greenbar.gif" width="80" height="10" title="8" alt="8"/></td>
          <td class="ctr2" id="e3">88%</td>
          <td class="ctr1" id="f4">1</td>
          <td class="ctr2" id="g1">15</td>
@@ -384,9 +384,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
       </tr>
       <tr>
          <td id="a2">GroupsModel</td>
-         <td class="bar" id="b5"><img src="./.github/markdown//greenbar.gif" width="25" height="10" title="92" alt="92"/></td>
+         <td class="bar" id="b5"><img src="./.github/markdown/greenbar.gif" width="25" height="10" title="92" alt="92"/></td>
          <td class="ctr2" id="c0">100%</td>
-         <td class="bar" id="d4"><img src="./.github/markdown//greenbar.gif" width="40" height="10" title="4" alt="4"/></td>
+         <td class="bar" id="d4"><img src="./.github/markdown/greenbar.gif" width="40" height="10" title="4" alt="4"/></td>
          <td class="ctr2" id="e0">100%</td>
          <td class="ctr1" id="f5">0</td>
          <td class="ctr2" id="g2">9</td>
@@ -399,9 +399,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
       </tr>
       <tr>
          <td id="a3">GroupsResource</td>
-         <td class="bar" id="b6"><img src="./.github/markdown//greenbar.gif" width="24" height="10" title="89" alt="89"/></td>
+         <td class="bar" id="b6"><img src="./.github/markdown/greenbar.gif" width="24" height="10" title="89" alt="89"/></td>
          <td class="ctr2" id="c1">100%</td>
-         <td class="bar" id="d5"><img src="./.github/markdown//greenbar.gif" width="40" height="10" title="4" alt="4"/></td>
+         <td class="bar" id="d5"><img src="./.github/markdown/greenbar.gif" width="40" height="10" title="4" alt="4"/></td>
          <td class="ctr2" id="e1">100%</td>
          <td class="ctr1" id="f6">0</td>
          <td class="ctr2" id="g3">8</td>
@@ -414,9 +414,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
       </tr>
       <tr>
          <td id="a7">PlugsResource</td>
-         <td class="bar" id="b7"><img src="./.github/markdown//greenbar.gif" width="12" height="10" title="44" alt="44"/></td>
+         <td class="bar" id="b7"><img src="./.github/markdown/greenbar.gif" width="12" height="10" title="44" alt="44"/></td>
          <td class="ctr2" id="c2">100%</td>
-         <td class="bar" id="d6"><img src="./.github/markdown//greenbar.gif" width="40" height="10" title="4" alt="4"/></td>
+         <td class="bar" id="d6"><img src="./.github/markdown/greenbar.gif" width="40" height="10" title="4" alt="4"/></td>
          <td class="ctr2" id="e2">100%</td>
          <td class="ctr1" id="f7">0</td>
          <td class="ctr2" id="g7">5</td>
